@@ -14,3 +14,4 @@
 Route::get('/', 'PagesController@index');
 
 Route::resource('/temas', 'ThemesController');
+Route::resource('/posts', 'PostsController');
