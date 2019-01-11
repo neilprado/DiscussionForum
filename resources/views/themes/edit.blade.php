@@ -8,6 +8,6 @@
         {{Form::text('name', $theme->name, ['class' => 'form-control', 'placeholder' => 'Nome do Tema'])}}
       </div>
       {{Form::hidden('_method', 'PUT')}}
-      {{Form::submit('Editar', ['class' => 'btn btn-primary'])}}
+      {{Form::submit('Atualizar', ['class' => 'btn btn-primary'])}}
     {!!Form::close()!!}
 @endsection
