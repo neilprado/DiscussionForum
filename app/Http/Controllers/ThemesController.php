@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Theme;
 
 class ThemesController extends Controller
 {
@@ -13,7 +14,8 @@ class ThemesController extends Controller
      */
     public function index()
     {
-        //
+        $themes = Theme::orderBy('created_at', 'desc')->get();
+        return view('themes.index')->with('themes', $themes);
     }
 
     /**
@@ -23,7 +25,7 @@ class ThemesController extends Controller
      */
     public function create()
     {
-        //
+        return view('themes.create');
     }
 
     /**

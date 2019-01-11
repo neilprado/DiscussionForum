@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1>Posts</h1>
+  <h1 class="mt-2">Posts</h1>
+  <a href="/projeto/DiscussionForum/public/temas/create" class="btn btn-primary mt-2 mb-3">Criar Tema</a>
   @if (count($themes) > 0)
     @foreach ($themes as $t)
       <div class="card mt-3">
