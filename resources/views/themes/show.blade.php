@@ -10,5 +10,7 @@
       <h5>{{$theme->name}}</h5>
     </div>
   </div>
+  <a href="/projeto/DiscussionForum/public/temas" class="btn btn-dark">Voltar</a>
+
     
 @endsection
