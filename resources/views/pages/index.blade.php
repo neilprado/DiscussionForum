@@ -8,4 +8,10 @@
       <a href="#" class="btn btn-primary">Registro</a>
     </p>
   </div>
+  <div class="mb-4">
+    @include('components.latestThemes')
+  </div>
+  <div class="mt-3">
+    @include('components.latestPosts')
+  </div>
 @endsection
