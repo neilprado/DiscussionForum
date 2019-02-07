@@ -2,7 +2,7 @@
 
 @section('content')
   <h1 class="mt-2">Lista de Temas</h1>
-    <a href="{{url("/temas/create")}}" class="btn btn-primary mt-2 mb-3">Criar Tema</a>
+  <a href="{{url("/temas/create")}}" class="btn btn-primary mt-2 mb-3">Criar Tema</a>
   @if (count($themes) > 0)
     @foreach ($themes as $t)
       <div class="card mt-3">
