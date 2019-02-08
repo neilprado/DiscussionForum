@@ -1,14 +1,12 @@
 @extends('layouts.app')
 @section('content')
-  @if (!Auth::guest())
-    @if (Auth::user()->id == $post->user_id)
-      <a href="/forum/DiscussionForum/public/posts/{{$post->id}}/edit" class="btn btn-dark mb-1">Editar</a>
-      {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
-        {{Form::hidden('_method', 'DELETE')}}
-        {{Form::submit('Apagar', ['class' => 'btn btn-danger'] )}}
-      {!!Form::close() !!}
-    @endif
-  @endif
+  <div class="row mt-4">
+    <a href="{{url("/posts/$post->id/edit")}}" class="btn btn-dark mb-3 ml-3">Editar</a>
+    {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST'])!!}
+      {{Form::hidden('_method', 'DELETE')}}
+      {{Form::submit('Apagar', ['class' => 'btn btn-danger ml-2'] )}}
+    {!!Form::close() !!}
+  </div>
   <div class="card">
     <div class="card-header p-3">
       <h2>{{$post->title}}</h2>
@@ -20,8 +18,8 @@
       </blockquote>
     </div> 
     <div class="card-footer">
-      <small>Escrito por:{{$post->user->name}} em {{$post->created_at->format('d/m/Y - H:i:s')}}</small>
+      <small>Escrito por:{{"Olar"}} em {{$post->created_at->format('d/m/Y - H:i:s')}}</small>
     </div>
   </div>
-  <a href="/forum/DiscussionForum/public/posts" class="btn btn-primary float-right mt-3">Voltar</a>
+  <a href="{{url("/posts")}}" class="btn btn-primary float-right mt-3">Voltar</a>
 @endsection

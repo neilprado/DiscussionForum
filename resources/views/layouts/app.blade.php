@@ -21,5 +21,9 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ URL::asset('../vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace( 'article-ckeditor' );
+    </script>
 </body>
 </html>
