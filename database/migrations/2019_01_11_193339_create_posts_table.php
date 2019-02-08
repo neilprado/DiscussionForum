@@ -18,10 +18,10 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->mediumText('message');
             $table->string('image')->nullable();
-          #  $table->integer('theme_id')->unsigned();
-          #  $table->integer('user_id')->unsigned();
-          #  $table->foreign('theme_id')->references('id')->on('themes');
-          #  $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('theme_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->foreign('theme_id')->references('id')->on('themes');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

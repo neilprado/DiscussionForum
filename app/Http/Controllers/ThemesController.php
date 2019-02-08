@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Theme;
+use App\User;
 
 class ThemesController extends Controller
 {
@@ -43,8 +44,9 @@ class ThemesController extends Controller
 
         $theme = new Theme();
         $theme->name = $request->input('name');
+        $theme->user_id = auth()->user()->id;
         $theme->save();
-
+        
         return redirect('/temas')->with('success', 'Tema criado com sucesso');
     }
 
@@ -69,6 +71,8 @@ class ThemesController extends Controller
     public function edit($id)
     {
         $theme = Theme::find($id);
+        if(auth()->user()->id !== $theme->user_id)
+            return redirect('theme')->with('error', 'Acesso não autorizado');
         return view('themes.edit')->with('theme', $theme);
     }
 
@@ -101,6 +105,8 @@ class ThemesController extends Controller
     public function destroy($id)
     {
         $theme = Theme::find($id);
+        if(auth()->user()->id !== $theme->user_id)
+            return redirect('/temas')->with('error', 'Acesso não autorizado');
         $theme->delete();
         return redirect('/temas')->with('success', 'Tema removido com sucesso');
     }

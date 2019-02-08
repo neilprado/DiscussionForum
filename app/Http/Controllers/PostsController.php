@@ -52,7 +52,7 @@ class PostsController extends Controller
         $post = new Post();
         $post->title = $request->input('title');
         $post->message = $request->input('message');
-        #$post->user_id = auth()->user()->id;
+        $post->user_id = auth()->user()->id;
         $post->image = $filename;
         $post->save();
         return redirect('/posts')->with('success', 'Post criado com sucesso');
@@ -79,8 +79,8 @@ class PostsController extends Controller
     public function edit($id)
     {
          $post = Post::find($id);
-       # if(auth()->user()->id !== $post->user_id)
-         #   return redirect('posts')->with('error', 'Acesso não autorizado');
+        if(auth()->user()->id !== $post->user_id)
+            return redirect('posts')->with('error', 'Acesso não autorizado');
         return view('posts.edit')->with('post', $post);
     }
 
@@ -120,8 +120,8 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-       # if(auth()->user()->id !== $post->user_id)
-        #    return redirect('posts')->with('error', 'Acesso não autorizado');
+        if(auth()->user()->id !== $post->user_id)
+            return redirect('posts')->with('error', 'Acesso não autorizado');
        # if(auth()->user()->id != 'noImage.png')
       #      Storage::delete('/forum/DiscussionForum/public/img/'.$post->image);
         $post->delete();
