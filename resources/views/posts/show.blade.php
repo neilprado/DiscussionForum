@@ -24,7 +24,8 @@
     </div> 
     <div class="card-footer">
       <small>Escrito por:{{$post->user()->first()->name}} em {{$post->created_at->format('d/m/Y - H:i:s')}}</small>
+      <a href="{{url("/posts")}}" class="btn btn-primary float-right">Voltar</a>
     </div>
   </div>
-  <a href="{{url("/posts")}}" class="btn btn-primary float-right mt-3">Voltar</a>
+  
 @endsection
