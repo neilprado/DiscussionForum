@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    public function users()
+    public function user()
     {
         return $this->belongsTo('App\User', 'aluno_id');
     }
 
-    public function themes()
+    public function theme()
     {
         return $this->belongsTo('App\Theme', 'theme_id');
     }

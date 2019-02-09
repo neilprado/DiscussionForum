@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Theme;
 
 class PostsController extends Controller
 {
@@ -25,7 +26,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $themes = Theme::all()->sortBy('name')->pluck('name', 'id');
+        return view('posts.create')->with('themes', $themes);
     }
 
     /**
@@ -53,6 +55,7 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->message = $request->input('message');
         $post->user_id = auth()->user()->id;
+        $post->theme_id = $request->input('theme_id');
         $post->image = $filename;
         $post->save();
         return redirect('/posts')->with('success', 'Post criado com sucesso');

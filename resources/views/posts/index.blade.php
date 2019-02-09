@@ -2,7 +2,9 @@
 
 @section('content')
   <h1 class="mt-2">Lista de Posts</h1>
-  <a href="{{url('posts/create')}}" class="btn btn-primary mt-2 mb-3">Criar Post</a>   
+  @if (!Auth::guest())
+    <a href="{{url('posts/create')}}" class="btn btn-primary mt-2 mb-3">Criar Post</a>   
+  @endif 
     @forelse ($posts as $p)
         <div class="card mt-3">
           <div class="card-body">
