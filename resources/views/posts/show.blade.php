@@ -14,7 +14,7 @@
   <div class="card">
     <div class="card-header p-3">
       <h2>{{$post->title}}</h2>
-      <h4>Tema: {{$post->theme_id}}</h4>
+      <h5>{{$post->theme()->first()->name}}</h5>
       <img style="width: 50%;" src="/forum/DiscussionForum/storage/img/{{$post->image}}" alt="Imagem do post!!">
     </div>
     <div class="card-body">
@@ -23,7 +23,7 @@
       </blockquote>
     </div> 
     <div class="card-footer">
-      <small>Escrito por:{{$post->user_id}} em {{$post->created_at->format('d/m/Y - H:i:s')}}</small>
+      <small>Escrito por:{{$post->user()->first()->name}} em {{$post->created_at->format('d/m/Y - H:i:s')}}</small>
     </div>
   </div>
   <a href="{{url("/posts")}}" class="btn btn-primary float-right mt-3">Voltar</a>
