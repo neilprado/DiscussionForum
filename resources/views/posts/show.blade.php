@@ -30,7 +30,7 @@
   
   <div class="row mt-4">
     <h5>Comentar</h5>
-    {!!Form::open(['action' => array('CommentsController@create', $post->id), 'method' => 'POST'])!!}
+    {!!Form::open(['action' => array('CommentsController@update', $post->id), 'method' => 'PATCH'])!!}
       <div class="form-group">
         {{Form::label('response', 'Comentário')}}
         {{Form::textarea('response', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Digite aqui seu comentário'])}}
@@ -43,7 +43,7 @@
       <div class="card-body">
         <h5 class="card-title">{{$comment->user()->first()->name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{$comment->created_at}}</h6>
-        <p class="card-text">{{$comment->response}}</p>
+        <p class="card-text">{{$comment->response}}</p> 
       </div>
     </div>
       

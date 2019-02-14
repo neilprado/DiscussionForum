@@ -13,7 +13,7 @@ class CommentsController extends Controller
         return view('posts.show');
     }
 
-    public function create(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'response' => 'required'
@@ -24,6 +24,6 @@ class CommentsController extends Controller
         $comment->user_id = auth()->user()->id;
         $comment->post_id = $id; #aqui eu ainda não faço ideia do q fazer
         $comment->save();
-        return redirect('posts.show')->with('success', 'Comentário realizado com sucesso');
+        return view('posts.show')->with('success', 'Comentário realizado com sucesso');
     }
 }
