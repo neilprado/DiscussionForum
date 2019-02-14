@@ -13,7 +13,7 @@ class CommentsController extends Controller
         return view('posts.show');
     }
 
-    public function create(Request $request)
+    public function create(Request $request, $id)
     {
         $this->validate($request, [
             'response' => 'required'
@@ -22,7 +22,8 @@ class CommentsController extends Controller
         $comment = new Comment();
         $comment->response = $request->input('response');
         $comment->user_id = auth()->user()->id;
-        $comment->theme_id = 1; #aqui eu ainda não faço ideia do q fazer
+        $comment->post_id = $id; #aqui eu ainda não faço ideia do q fazer
         $comment->save();
+        return redirect('posts.show')->with('success', 'Comentário realizado com sucesso');
     }
 }
