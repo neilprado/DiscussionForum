@@ -28,4 +28,29 @@
     </div>
   </div>
   
+  <div class="row mt-4">
+    <h5>Comentar</h5>
+    {!!Form::open(['action' => 'CommentsController@store', 'method' => 'POST'])!!}
+      <div class="form-group">
+        {{Form::label('response', 'Comentário')}}
+        {{Form::textarea('response', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Digite aqui seu comentário'])}}
+      </div>
+      {{Form::submit('Comentar', ['class' => 'btn btn-primary'])}}
+    {{Form::close()}}
+  </div>
+  @forelse ($post->comments()->get() as $comment)
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{$comment->user()->first()->name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{$comment->created_at}}</h6>
+        <p class="card-text">{{$comment->response}}</p>
+        @if (Auth::user_id == $comment->user_id)
+          <a href="#" class="btn btn-dark">Editar</a>
+        @endif
+      </div>
+    </div>
+      
+  @empty
+      <p>Ainda não há comentários para este post. Seja você o primeiro</p>
+  @endforelse
 @endsection
