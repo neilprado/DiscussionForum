@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
-@if (!Auth::guest())
-  @if (Auth::user()->id == $post->user_id)
-  <div class="row mt-4">
-    <a href="{{url("/posts/$post->id/edit")}}" class="btn btn-dark mb-3 ml-3">Editar</a>
-    {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST'])!!}
-      {{Form::hidden('_method', 'DELETE')}}
-      {{Form::submit('Apagar', ['class' => 'btn btn-danger ml-2'] )}}
-    {!!Form::close() !!}
-  </div>
+  @if (!Auth::guest())
+    @if (Auth::user()->id == $post->user_id)
+      <div class="row mt-4">
+        <a href="{{url("/posts/$post->id/edit")}}" class="btn btn-dark mb-3 ml-3">Editar</a>
+        {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST'])!!}
+          {{Form::hidden('_method', 'DELETE')}}
+          {{Form::submit('Apagar', ['class' => 'btn btn-danger ml-2'] )}}
+        {!!Form::close() !!}
+      </div>
     @endif
   @endif
   <div class="card">
@@ -28,26 +28,31 @@
     </div>
   </div>
   
-  <div class="row mt-4">
-    <h5>Comentar</h5>
-    {!!Form::open(['action' => array('CommentsController@update', $post->id), 'method' => 'PATCH'])!!}
-      <div class="form-group">
-        {{Form::label('response', 'Comentário')}}
-        {{Form::textarea('response', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Digite aqui seu comentário'])}}
-      </div>
-      {{Form::submit('Comentar', ['class' => 'btn btn-primary'])}}
+  <h4 class="text-center mt-3">Deixe seu comentário</h4>
+  {!!Form::open(['action' => array('CommentsController@update', $post->id), 'method' => 'PATCH'])!!}
+    <div class="form-group">
+      {{Form::label('response', 'Comentário')}}
+      {{Form::textarea('response', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Digite aqui seu comentário'])}}
+    </div>
+    {{Form::submit('Comentar', ['class' => 'btn btn-primary mb-2'])}}
     {{Form::close()}}
-  </div>
+    <!-- </div> -->
   @forelse ($post->comments()->get() as $comment)
-    <div class="card">
+    <div class="card text-center mt-2">
+      <div class="card-header">
+        <h5>{{$comment->user()->first()->name}}</h5>
+      </div>
       <div class="card-body">
-        <h5 class="card-title">{{$comment->user()->first()->name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{$comment->created_at}}</h6>
-        <p class="card-text">{{$comment->response}}</p> 
+        <p class="card-text">{{$comment->response}}</p>
+      </div> 
+      <div class="card-footer text-muted">
+        <small>{{$comment->created_at}}</small>
       </div>
     </div>
       
   @empty
-      <p>Ainda não há comentários para este post. Seja você o primeiro</p>
+      <div class="card-text">Ainda não há comentários para este post. Seja você o primeiro</div>
   @endforelse
+
+  
 @endsection
