@@ -35,23 +35,21 @@
       {{Form::textarea('response', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Digite aqui seu comentário'])}}
     </div>
     {{Form::submit('Comentar', ['class' => 'btn btn-primary mb-2'])}}
-    {{Form::close()}}
-    <!-- </div> -->
+    {!!Form::close()!!}
   @forelse ($post->comments()->get() as $comment)
     <div class="card text-center mt-2">
       <div class="card-header">
         <h5>{{$comment->user()->first()->name}}</h5>
       </div>
       <div class="card-body">
-        <p class="card-text">{{$comment->response}}</p>
+        <p class="card-text text-left">{{$comment->response}}</p>
       </div> 
       <div class="card-footer text-muted">
         <small>{{$comment->created_at}}</small>
       </div>
     </div>
-      
   @empty
-      <div class="card-text">Ainda não há comentários para este post. Seja você o primeiro</div>
+      <div class="card-text mt-3 text-center">Ainda não há comentários para este post. Seja você o primeiro</div>
   @endforelse
 
   
