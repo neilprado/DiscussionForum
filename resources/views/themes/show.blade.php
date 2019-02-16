@@ -18,5 +18,20 @@
   </div>
   <a href="{{url("/temas")}}" class="btn btn-primary mt-3 float-right">Voltar</a>
 
+  <div class="row mt-5">
+    @forelse ($theme->posts()->get() as $post)
+        <div class="card mr-2">
+          <div class="card-body">
+            <a href="{{url("/posts/$post->id")}}">
+              <p class="card-text">{!!$post->title!!}</p>
+            </a>
+            <p class="card-text">{!!$post->message!!}</p>
+          </div>
+        </div>
+    @empty
+        
+    @endforelse
+  </div>
+
     
 @endsection

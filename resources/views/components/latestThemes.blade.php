@@ -1,6 +1,3 @@
-<h1>Últimos temas</h1>
-<div class="card">
-  <div class="card-body">
-    This is some text within a card body.
-  </div>
-</div>
+<h2>Últimos temas</h2>
+  
+  
