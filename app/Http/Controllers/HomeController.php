@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $title = 'Bem vindo ao TechForum';
+        return view('pages.index')->with('title', $title);
     }
 }

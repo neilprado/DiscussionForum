@@ -27,22 +27,23 @@
       <a href="{{url("/posts")}}" class="btn btn-primary float-right">Voltar</a>
     </div>
   </div>
-  
-  <h4 class="text-center mt-3">Deixe seu comentário</h4>
-  {!!Form::open(['action' => array('CommentsController@update', $post->id), 'method' => 'PATCH'])!!}
-    <div class="form-group">
-      {{Form::label('response', 'Comentário')}}
-      {{Form::textarea('response', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Digite aqui seu comentário'])}}
-    </div>
-    {{Form::submit('Comentar', ['class' => 'btn btn-primary mb-2'])}}
-    {!!Form::close()!!}
+  @if (!Auth::guest())
+    <h4 class="text-center mt-3 mb-2">Deixe seu comentário</h4>
+    {!!Form::open(['action' => array('CommentsController@update', $post->id), 'method' => 'PATCH'])!!}
+      <div class="form-group">
+        {{Form::label('response', 'Comentário')}}
+        {{Form::textarea('response', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Digite aqui seu comentário'])}}
+      </div>
+      {{Form::submit('Comentar', ['class' => 'btn btn-primary mb-2'])}}
+      {!!Form::close()!!}
+    @endif
   @forelse ($post->comments()->get() as $comment)
     <div class="card text-center mt-2">
       <div class="card-header">
         <h5>{{$comment->user()->first()->name}}</h5>
       </div>
       <div class="card-body">
-        <p class="card-text text-left">{{$comment->response}}</p>
+        <p class="card-text text-left">{!!$comment->response!!}</p>
       </div> 
       <div class="card-footer text-muted">
         <small>{{$comment->created_at}}</small>

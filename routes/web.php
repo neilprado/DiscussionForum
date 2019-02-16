@@ -12,10 +12,27 @@
 */
 
 Route::get('/', 'PagesController@index');
-
-Route::resource('/temas', 'ThemesController');
-Route::resource('/posts', 'PostsController');
 Route::resource('/comments', 'CommentsController');
+
+Route::group(['prefix' => 'temas', 'middleware' => 'auth'], function(){
+  Route::get('create', 'ThemesController@create');
+  Route::post('create', 'ThemesController@store');
+  Route::get('{id}/edit', 'ThemesController@edit');
+  Route::patch('{id}', 'ThemesController@update');
+  Route::delete('{id}', 'ThemesController@destroy');
+});
+Route::get('/temas', 'ThemesController@index');
+Route::get('/temas/{id}', 'ThemesController@show'); 
+
+Route::group(['prefix' => 'posts', 'middleware' => 'auth'], function(){
+  Route::get('create', 'PostsController@create');
+  Route::post('create', 'PostsController@store');
+  Route::get('{id}/edit', 'PostsController@edit');
+  Route::patch('{id}', 'PostsController@update');
+  Route::delete('{id}', 'PostsController@destroy');
+});
+Route::get('/posts', 'PostsController@index');
+Route::get('/posts/{id}', 'PostsController@show');
 
 Auth::routes();
 
