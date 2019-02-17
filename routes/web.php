@@ -33,6 +33,7 @@ Route::group(['prefix' => 'posts', 'middleware' => 'auth'], function(){
 });
 Route::get('/posts', 'PostsController@index');
 Route::get('/posts/{id}', 'PostsController@show');
+Route::post('posts/filtro', 'PostsController@filterPosts');
 
 Auth::routes();
 

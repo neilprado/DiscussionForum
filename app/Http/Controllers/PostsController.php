@@ -130,4 +130,10 @@ class PostsController extends Controller
         $post->delete();
         return redirect('/posts')->with('success', 'Post removido com sucesso');
     }
+
+    public function filterPosts(Request $request)
+    {
+        $posts = Post::where('title', 'LIKE', '%'.$request->input('title').'%')->get();
+        return view('posts.filter')->with('posts', $posts);
+    }
 }

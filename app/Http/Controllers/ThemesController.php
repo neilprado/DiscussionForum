@@ -110,10 +110,4 @@ class ThemesController extends Controller
         $theme->delete();
         return redirect('/temas')->with('success', 'Tema removido com sucesso');
     }
-
-    public function filter()
-    {
-        $themes = Theme::orderBy('id', 'desc')->get()->take(5);
-        return view('pages.index')->with('themes', $themes);
-    }
 }

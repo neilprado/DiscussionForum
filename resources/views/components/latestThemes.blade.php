@@ -2,7 +2,7 @@
 @forelse ($themes as $t)
 <div class="card">
   <div class="card-body">
-    <p>{{$t->name}}</p>
+    <a href="{{url("/temas/$t->id")}}"><p>{{$t->name}}</p></a>
   </div>
 </div>
 @empty

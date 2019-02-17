@@ -9,7 +9,7 @@
     </p>
   </div>
   <div class="mb-4">
-    @include('components.latestThemes')
+    @include('components.latestThemes', ['themes' => $themes])
   </div>
   <div class="mt-3">
     @include('components.latestPosts')
