@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(Auth::user())
+            setcookie('olduser', Auth::user()->email, time()+7200);
         $title = 'Bem vindo ao TechForum';
         return view('pages.index')->with('title', $title);
     }
