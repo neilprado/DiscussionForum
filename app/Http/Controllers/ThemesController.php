@@ -110,4 +110,10 @@ class ThemesController extends Controller
         $theme->delete();
         return redirect('/temas')->with('success', 'Tema removido com sucesso');
     }
+
+    public function filterThemes(Request $request)
+    {
+        $themes = Theme::where('name', 'LIKE', '%'.$request->input('name').'%')->get();
+        return view('posts.filter')->with('themes', $themes);
+    }
 }

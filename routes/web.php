@@ -22,7 +22,8 @@ Route::group(['prefix' => 'temas', 'middleware' => 'auth'], function(){
   Route::delete('{id}', 'ThemesController@destroy');
 });
 Route::get('/temas', 'ThemesController@index');
-Route::get('/temas/{id}', 'ThemesController@show'); 
+Route::get('/temas/{id}', 'ThemesController@show');
+Route::post('/posts/filtro', 'ThemesController@filterThemes'); 
 
 Route::group(['prefix' => 'posts', 'middleware' => 'auth'], function(){
   Route::get('create', 'PostsController@create');
