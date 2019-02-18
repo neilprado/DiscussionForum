@@ -114,6 +114,6 @@ class ThemesController extends Controller
     public function filterThemes(Request $request)
     {
         $themes = Theme::where('name', 'LIKE', '%'.$request->input('name').'%')->get();
-        return view('posts.filter')->with('themes', $themes);
+        return view('themes.filter')->with('themes', $themes);
     }
 }

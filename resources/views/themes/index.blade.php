@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  {!!Form::open(['action' => 'ThemesController@filterThemes', 'method' => 'POST']) !!}
+  {!!Form::open(['action' => 'ThemesController@filterThemes', 'method' => 'POST']) !!} 
       <div class="form-inline my-2 my-lg-0">
         {!!Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Pesquise seu post aqui']) !!}
         {{Form::submit('Pesquisar', ['class' => 'btn btn-outline-primary my-2 my-sm-0'])}}

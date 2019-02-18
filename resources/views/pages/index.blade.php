@@ -12,6 +12,6 @@
     @include('components.latestThemes', ['themes' => $themes])
   </div>
   <div class="mt-3">
-    @include('components.latestPosts')
+    @include('components.latestPosts', ['posts' => $posts])
   </div>
 @endsection
