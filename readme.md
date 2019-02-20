@@ -6,6 +6,7 @@ Projeto da disciplina Programação para Web I pelo professor Edemberg Rocha da 
 ![Mapeamento de Dados](https://github.com/neilprado/DiscussionForum/blob/master/mapeamento.jpg)
 
 *Pré requisitos*
+
 **Xampp, Wamp ou Lamp**
 **Composer**
 **Banco de dados criado no PhpMyAdmin, lembrar de configurar o .env com a database com o mesmo nome**
