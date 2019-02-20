@@ -8,7 +8,9 @@ Projeto da disciplina Programação para Web I pelo professor Edemberg Rocha da 
 *Pré requisitos*
 
 **Xampp, Wamp ou Lamp**
+
 **Composer**
+
 **Banco de dados criado no PhpMyAdmin, lembrar de configurar o .env com a database com o mesmo nome**
 
 *Como utilizar o projeto?*
