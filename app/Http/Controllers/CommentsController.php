@@ -22,9 +22,8 @@ class CommentsController extends Controller
         $comment = new Comment();
         $comment->response = $request->input('response');
         $comment->user_id = auth()->user()->id;
-        $comment->post_id = $id; #aqui eu ainda não faço ideia do q fazer
+        $comment->post_id = $id; 
         $comment->save();
         return back()->with('success', 'Comentário realizado com sucesso');
-        //return view('posts.show')->with('success', 'Comentário realizado com sucesso');
     }
 }
