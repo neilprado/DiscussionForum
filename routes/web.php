@@ -50,11 +50,3 @@ Auth::routes();
 Route::get('/home', 'PagesController@index')->name('home');
 
 Route::get('tree/{user?}', 'RelativesController@showTree');
-
-// Route Register
-Route::get('register', 'RegistrationController@create');
-Route::post('register', 'RegistrationController@store');
-// Route Login / Logout
-Route::get('login', ['as' => 'login', 'uses' => 'SessionController@create']);
-Route::post('login', 'SessionController@store');
-Route::get('logout', 'SessionController@destroy');
