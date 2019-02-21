@@ -15,7 +15,6 @@
     <div class="card-header p-3">
       <h2>{{$post->title}}</h2>
       <h5>{{$post->theme()->first()->name}}</h5>
-      <img style="width: 50%;" src="/forum/DiscussionForum/storage/img/{{$post->image}}" alt="Imagem do post!!">
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
