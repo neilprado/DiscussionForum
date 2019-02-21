@@ -54,9 +54,9 @@
         </tbody>
     </table>
 
-    <p>
+    {{-- <p>
         {{ $genogram }}
-    </p>
+    </p> --}}
 
   @else
     <p class="card-text">Não há nenhum parente cadastrado</p>

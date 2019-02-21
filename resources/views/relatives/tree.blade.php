@@ -518,7 +518,7 @@
     // end GenogramLayout class
   </script>
 
-  <p>{{ $genogram }}</p>
+  {{-- <p>{{ $genogram }}</p> --}}
 
   <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:600px"></div>
 
