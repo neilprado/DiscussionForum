@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Comment', 'user_id');
     }
+
+    public function relatives()
+    {
+        return $this->hasMany('App\Relative', 'user_id');
+    }
 }

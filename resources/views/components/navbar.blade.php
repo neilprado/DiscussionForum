@@ -9,6 +9,9 @@
        <a class="nav-link" href="{{url("/")}}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{url("/relatives")}}">Parentes</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{url("/temas")}}">Temas</a>
       </li>
       <li class="nav-item">

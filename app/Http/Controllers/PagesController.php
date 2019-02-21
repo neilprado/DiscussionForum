@@ -10,7 +10,7 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $title = 'Bem vindo ao TechForum';
+        $title = 'Bem vindo ao Family Tree';
         $themes = Theme::orderBy('id', 'desc')->take(5)->get();
         $posts = Post::orderBy('id', 'desc')->take(5)->get();
         return view('pages.index')->with(['title' => $title, 'themes' => $themes, 'posts' => $posts]);

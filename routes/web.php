@@ -36,6 +36,17 @@ Route::get('/posts', 'PostsController@index');
 Route::get('/posts/{id}', 'PostsController@show');
 Route::post('posts/filtro', 'PostsController@filterPosts');
 
+Route::group(['prefix' => 'relatives', 'middleware' => 'auth'], function(){
+  Route::get('/', 'RelativesController@index');
+  Route::get('create', 'RelativesController@create');
+  Route::post('create', 'RelativesController@store');
+  Route::get('{id}/edit', 'RelativesController@edit');
+  Route::patch('{id}', 'RelativesController@update');
+  Route::delete('{id}', 'RelativesController@destroy');
+});
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PagesController@index')->name('home');
+
+Route::get('tree/{user?}', 'RelativesController@showTree');
