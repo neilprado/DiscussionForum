@@ -16,7 +16,7 @@ class RelativesController extends Controller
      */
     public function index()
     {
-        $relatives = Relative::all();
+        $relatives = Relative::where('user_id', auth()->user()->id)->get();
 
         $genogram = $this->generateGenogramJson(auth()->user());
 
