@@ -46,3 +46,8 @@ php artisan key:generate
 ```sh
 php artisan migrate
 ```
+
+8. Realize o seed do banco
+```sh
+php artisan db:seed
+```
